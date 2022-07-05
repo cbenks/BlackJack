@@ -20,8 +20,26 @@ h1 {
   color: greenyellow;
 }
 
+.instructions {
+  height: 50ch;
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-family: 'Luckiest Guy', cursive;
+  color: white;
+}
+
 ul {
-  list-style: none;
+  list-style: circle;
+  text-align: left;
+  color: yellowgreen;
+  font-weight: 900;
+  font-size: 2.8ch;
+}
+
+li {
+  margin: 10px;
 }
 
 button {
