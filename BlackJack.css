@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
-* {
+/* * {
   box-sizing:border-box;
-}
+} */
 
 body {
   background-color: greenyellow;
@@ -16,3 +16,50 @@ h1 {
 .jack {
   color: red;
 }
+
+.dealer {
+  margin:30px;
+}
+
+.player {
+  margin: 30px;
+}
+
+.cardsD {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  height:200px;
+  margin:25px;
+  column-gap: 40px;
+}
+
+.cardsP {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  height:200px;
+  margin:25px;
+  column-gap: 40px;
+}
+
+.card{
+  background-color: white;
+  border: 3px solid black;
+}
+
+button {
+  border: none;
+  font-family: 'Luckiest Guy', cursive;
+  height: 20%;
+  background-color: greenyellow;
+  font-size: 33px;
+  overflow:auto;
+  margin: 40px;
+}
+
+.start {
+  color:red;
+}
+
+
