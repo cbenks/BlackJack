@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  background-color: greenyellow;
+}
+
+h1 {
+  font-family: 'Luckiest Guy', cursive;
+  letter-spacing: .5ch;
+  font-size: 5ch;
+}
+.jack {
+  color: red;
+}
