@@ -54,6 +54,10 @@ h2 {
   background-color: white;
   border: 5px solid black;
   border-radius: 12.5px;
+  font-size: 15ch;
+  text-align: center;
+  color: red;
+  padding: 40px 20px 40px 20px;
 
 }
 
@@ -76,6 +80,46 @@ button {
   color:red;
   text-align:center;
   font-size: 5ch;
+}
+
+.card.d1 {
+  color: black;
+}
+
+.card.d2 {
+  color: green;
+}
+
+.card.d3 {
+  color: black;
+}
+
+.card.d4 {
+  color: green;
+}
+
+.card.d5 {
+  color: black;
+}
+
+.card.p1 {
+  color: red;
+}
+
+.card.p2 {
+  color: blue;
+}
+
+.card.p3 {
+  color: red;
+}
+
+.card.p4 {
+  color: blue;
+}
+
+.card.p5 {
+  color: red;
 }
 
 
