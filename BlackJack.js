@@ -1,1 +1,2 @@
-console.log('hello world')
+let playerSum = 0
+let dealerSum = 0
