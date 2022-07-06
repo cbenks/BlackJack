@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 /* * {
   box-sizing:border-box;
 } */
@@ -17,6 +17,11 @@ h1 {
   color: red;
 }
 
+h2 {
+  font-family: 'Luckiest Guy', cursive;
+
+}
+
 .dealer {
   margin:30px;
 }
@@ -29,24 +34,27 @@ h1 {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  height:200px;
+  height:250px;
   margin:25px;
-  column-gap: 40px;
+  column-gap: 100px;
+  margin-right: 150px;
 }
 
 .cardsP {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  height:200px;
+  height:250px;
   margin:25px;
-  column-gap: 40px;
+  column-gap: 100px;
+  margin-right: 150px;
 }
 
 .card{
   background-color: white;
-  border: 3px solid black;
-  
+  border: 5px solid black;
+  border-radius: 12.5px;
+
 }
 
 button {
@@ -61,6 +69,13 @@ button {
 
 .start {
   color:red;
+}
+
+.displayMes {
+  font-family: 'Anton', sans-serif;
+  color:red;
+  text-align:center;
+  font-size: 5ch;
 }
 
 
