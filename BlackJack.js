@@ -20,8 +20,11 @@ const p2 = document.querySelector('.card.p2')
 const p3 = document.querySelector('.card.p3')
 const p4 = document.querySelector('.card.p4')
 const p5 = document.querySelector('.card.p5')
+let ace = false
+let dealerHidden = []
 
 //FUNCTIONS
+// resource: https://www.youtube.com/watch?v=bMYCWccL-3U
 
 const buildDeck = () => {
   for (i = 0; i < values.length; i++) {
@@ -33,22 +36,58 @@ const buildDeck = () => {
 
 const shuffleDeck = () => {
   for (i = 0; i < deck.length; i++) {
-    x = Math.floor(Math.random() * 52)
+    let x = Math.floor(Math.random() * 52)
+    let s = deck[i]
     deck[i] = deck[x]
+    deck[x] = s
   }
-  console.log(deck)
 }
 
-const randomCard = () => {
-  x = Math.floor(Math.random() * 52)
-  console.log(deck[x])
-}
+// const randomCard = () => {
+//   x = Math.floor(Math.random() * 52)
+//   console.log(deck[x])
+// }
 
-buildDeck()
-shuffleDeck()
+const cardValue = (card) => {
+  let arr = card.split('-')
+  value = arr[0]
+  if (value === NaN) {
+    if (value === 'a') {
+      value = 11
+    } else {
+      value = 10
+    }
+  }
+}
 
 // Conditionals
 
 if (playerSum > 21) {
   mes.innerHTML = 'You went over 21, you lose.'
 }
+
+if (playerSum === dealerSum) {
+  mes.innerHTML = 'You are tied, it is a push.'
+}
+
+// Event Listeners
+
+start.addEventListener(
+  'click',
+  () => {
+    buildDeck()
+    shuffleDeck()
+    dealerHidden = deck.pop()
+    dealerSum += cardValue(dealerHidden)
+    console.log(value)
+  },
+  { once: true }
+)
+
+stay.addEventListener('click', () => {
+  console.log(deck.pop())
+})
+
+hit.addEventListener('click', () => {})
+
+reset.addEventListener('click', () => {})
