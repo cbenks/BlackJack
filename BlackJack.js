@@ -10,8 +10,24 @@ let deck = []
 
 const buildDeck = () => {
   for (i = 0; i < values.length; i++) {
-    for (x = 0; x < suits.length; x++) {}
+    for (x = 0; x < suits.length; x++) {
+      deck.push(values[i] + '-' + suits[x])
+    }
   }
 }
 
-const shuffleDeck = () => {}
+const shuffleDeck = () => {
+  for (i = 0; i < deck.length; i++) {
+    x = Math.floor(Math.random() * 52)
+    deck[i] = deck[x]
+  }
+  console.log(deck)
+}
+
+const randomCard = () => {
+  x = Math.floor(Math.random() * 52)
+  console.log(deck[x])
+}
+
+buildDeck()
+shuffleDeck()
