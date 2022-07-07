@@ -62,6 +62,27 @@ const cardValue = (card) => {
 }
 const checkAce = () => {}
 
+const displayCard = (card, div) => {
+  let arr = card.split('-')
+  let suit = arr[1]
+  let num = arr[0]
+  div.innerHTML = num
+  if (suit === 's') {
+    div.style.color = 'black'
+  } else if (suit === 'h') {
+    div.style.color = 'red'
+  } else if (suit === 'c') {
+    div.style.color = 'green'
+  } else if (suit === 'd') {
+    div.style.color = 'blue'
+  }
+}
+// const displayCard = (card, div) => {
+//   let arr = card.split('-')
+//   let num = arr[0]
+//   div.innerHTML = num
+// }
+
 // Conditionals
 
 if (playerSum > 21) {
@@ -80,14 +101,23 @@ start.addEventListener(
     buildDeck()
     shuffleDeck()
     dealerHidden = deck.pop()
+    p1Card = deck.pop()
+    displayCard(p1Card, p1)
+    p2Card = deck.pop()
+    displayCard(p2Card, p2)
+
     dealerSum += cardValue(dealerHidden)
+    playerSum += cardValue(p1Card)
+    playerSum += cardValue(p2Card)
+    console.log(playerSum)
+
     if (dealerSum < 17) {
       d2Card = deck.pop()
       dealerSum += cardValue(d2Card)
-      d2.innerHTML = cardValue(d2Card)
-      console.log(d2Card)
-      console.log(dealerSum)
-      console.log(cardValue(dealerHidden))
+      displayCard(d2Card, d2)
+      // console.log(d2Card)
+      // console.log(cardValue(dealerHidden))
+      // console.log(dealerSum)
     }
   },
   { once: true }
