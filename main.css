@@ -22,7 +22,7 @@ h1 {
 
 .instructions {
   height: 50ch;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 h2 {
@@ -36,10 +36,11 @@ ul {
   color: yellowgreen;
   font-weight: 900;
   font-size: 2.8ch;
+  height: 45ch;
 }
 
 li {
-  margin: 10px;
+  margin: 40px;
 }
 
 button {
