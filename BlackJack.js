@@ -2,7 +2,7 @@
 
 let playerSum = 0
 let dealerSum = 0
-let values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'j', 'q', 'k', 'a']
+let values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
 let suits = ['s', 'h', 'c', 'd']
 let deck = []
 const mes = document.querySelector('.message')
@@ -52,7 +52,7 @@ const cardValue = (card) => {
   let arr = card.split('-')
   let value = arr[0]
   if (isNaN(value)) {
-    if (value === 'a') {
+    if (value === 'A') {
       return 11
     } else {
       return 10
@@ -105,20 +105,29 @@ start.addEventListener(
     displayCard(p1Card, p1)
     p2Card = deck.pop()
     displayCard(p2Card, p2)
-
     dealerSum += cardValue(dealerHidden)
     playerSum += cardValue(p1Card)
     playerSum += cardValue(p2Card)
-    console.log(playerSum)
-
     if (dealerSum < 17) {
       d2Card = deck.pop()
       dealerSum += cardValue(d2Card)
       displayCard(d2Card, d2)
-      // console.log(d2Card)
-      // console.log(cardValue(dealerHidden))
-      // console.log(dealerSum)
     }
+    if (playerSum < 21) {
+      hit.addEventListener(
+        'click',
+        () => {
+          p3Card = deck.pop()
+          displayCard(p3Card, p3)
+          playerSum += cardValue(p3Card)
+          console.log(playerSum)
+        },
+        { once: true }
+      )
+    }
+
+    console.log(dealerSum)
+    console.log(playerSum)
   },
   { once: true }
 )
@@ -127,6 +136,18 @@ stay.addEventListener('click', () => {
   console.log(deck.pop())
 })
 
-hit.addEventListener('click', () => {})
+// hit.addEventListener(
+//   'click',
+//   () => {
+//     if (playerSum <= 21) {
+//       p3Card = deck.pop()
+//       displayCard(p3Card, p3)
+//     } else {
+//       return
+//     }
+//     playerSum += cardValue(p3Card)
+//   },
+//   { once: true }
+// )
 
 reset.addEventListener('click', () => {})
