@@ -12,6 +12,7 @@ h1 {
   font-family: 'Luckiest Guy', cursive;
   letter-spacing: .5ch;
   font-size: 5ch;
+  margin-top: 5px;
 }
 .jack {
   color: red;
@@ -19,15 +20,16 @@ h1 {
 
 h2 {
   font-family: 'Luckiest Guy', cursive;
+  margin-bottom: 0px;
 
 }
 
 .dealer {
-  margin:30px;
+  margin:15px;
 }
 
 .player {
-  margin: 30px;
+  margin: 15px;
 }
 
 .cardsD {
@@ -38,6 +40,7 @@ h2 {
   margin:25px;
   column-gap: 100px;
   margin-right: 150px;
+  margin-top: 5px;
 }
 
 .cardsP {
@@ -48,6 +51,7 @@ h2 {
   margin:25px;
   column-gap: 100px;
   margin-right: 150px;
+  margin-top: 5px;
 }
 
 .card{
@@ -68,18 +72,18 @@ button {
   background-color: greenyellow;
   font-size: 33px;
   overflow:auto;
-  margin: 40px;
+  margin: 20px;
 }
 
 .start {
   color:red;
 }
 
-.displayMes {
-  font-family: 'Anton', sans-serif;
-  color:red;
+.message {
+  color: black;
   text-align:center;
   font-size: 5ch;
+  margin-top: 5px;
 }
 
 .card.d1 {
