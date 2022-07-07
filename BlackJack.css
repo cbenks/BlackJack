@@ -88,6 +88,21 @@ button {
   color:red;
 }
 
+h3 {
+  display: inline-block;
+  font-size: 4ch;
+  font-family: 'Luckiest Guy', cursive;
+  color: red;
+}
+
+.pScore {
+margin-right: 15px;
+}
+
+.dScore {
+margin-left: 15px;
+}
+
 .message {
   color: black;
   text-align:center;

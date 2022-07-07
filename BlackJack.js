@@ -20,6 +20,8 @@ const p2 = document.querySelector('.card.p2')
 const p3 = document.querySelector('.card.p3')
 const p4 = document.querySelector('.card.p4')
 const p5 = document.querySelector('.card.p5')
+const pScore = document.querySelector('.pScore')
+const dScore = document.querySelector('.dScore')
 let ace = false
 let dealerHidden = []
 let playerScore = 0
@@ -77,8 +79,24 @@ const displayCard = (card, div) => {
 const checkWin = () => {
   if (playerSum === 21) {
     mes.innerHTML = 'BLACKJACK! You win!'
+    stay.removeEventListener(
+      'click',
+      () => {
+        dealerTurn()
+        stayCheckWin()
+      },
+      { once: true }
+    )
   } else if (playerSum > 21) {
     mes.innerHTML = 'You went over 21, you lose.'
+    stay.removeEventListener(
+      'click',
+      () => {
+        dealerTurn()
+        stayCheckWin()
+      },
+      { once: true }
+    )
   }
 }
 
@@ -205,6 +223,9 @@ reset.addEventListener('click', () => {
   dealerSum = 0
   playerSum = 0
 })
+
+dScore.innerHTML = `Dealer:${dealerScore}`
+pScore.innerHTML = `Player:${playerScore}`
 
 // const hitMe = (card, div) => {
 //   if (playerSum < 21) {
