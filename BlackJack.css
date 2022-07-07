@@ -32,6 +32,15 @@ h2 {
   margin: 15px;
 }
 
+.playerH2 {
+  display: inline-block;
+  margin-top: 5px;
+}
+
+input {
+  margin: 5px;
+}
+
 .cardsD {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -85,46 +94,4 @@ button {
   font-size: 5ch;
   margin-top: 5px;
 }
-
-.card.d1 {
-  color: black;
-  background-color: yellow;
-}
-
-.card.d2 {
-  color: green;
-}
-
-.card.d3 {
-  color: black;
-}
-
-.card.d4 {
-  color: green;
-}
-
-.card.d5 {
-  color: black;
-}
-
-.card.p1 {
-  color: red;
-}
-
-.card.p2 {
-  color: blue;
-}
-
-.card.p3 {
-  color: red;
-}
-
-.card.p4 {
-  color: blue;
-}
-
-.card.p5 {
-  color: red;
-}
-
 

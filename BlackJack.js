@@ -22,6 +22,8 @@ const p4 = document.querySelector('.card.p4')
 const p5 = document.querySelector('.card.p5')
 let ace = false
 let dealerHidden = []
+let playerScore = 0
+let dealerScore = 0
 
 //FUNCTIONS
 // resource: https://www.youtube.com/watch?v=bMYCWccL-3U
@@ -81,22 +83,41 @@ const checkWin = () => {
 }
 
 const stayCheckWin = () => {
-  if (playerSum > dealerSum) {
-    mes.inn
+  if (dealerSum === 21) {
+    mes.innerHTML = 'Dealer hits BlackJack - You lose'
+  } else if (dealerSum > 21) {
+    mes.innerHTML = 'Dealer busts - You win'
+  } else {
+    if (playerSum > dealerSum) {
+      mes.innerHTML = 'You beat the dealer'
+    } else if (playerSum === dealerSum) {
+      mes.innerHTML = 'You are tied. It is a push'
+    } else {
+      mes.innerHTML = 'Dealer has higher score - You lose'
+    }
+  }
+}
+
+const dealerTurn = () => {
+  displayCard(dealerHidden, d1)
+  if (dealerSum < 17) {
+    d3Card = deck.pop()
+    displayCard(d3Card, d3)
+    dealerSum += cardValue(d3Card)
+    if (dealerSum < 17) {
+      d4Card = deck.pop()
+      displayCard(d4Card, d4)
+      dealerSum += cardValue(d4Card)
+      if (dealerSum < 17) {
+        d5Card = deck.pop()
+        displayCard(d5Card, d5)
+        dealerSum += cardValue(d5Card)
+      }
+    }
   }
 }
 
 const checkAce = () => {}
-
-// Conditionals
-
-if (playerSum > 21) {
-  mes.innerHTML = 'You went over 21, you lose.'
-}
-
-if (playerSum === dealerSum) {
-  mes.innerHTML = 'You are tied, it is a push.'
-}
 
 // Event Listeners
 
@@ -104,6 +125,7 @@ const startGame = () => {
   start.addEventListener(
     'click',
     () => {
+      mes.innerHTML = 'Stay or Hit?'
       buildDeck()
       shuffleDeck()
       dealerHidden = deck.pop()
@@ -117,6 +139,7 @@ const startGame = () => {
       d2Card = deck.pop()
       displayCard(d2Card, d2)
       dealerSum += cardValue(d2Card)
+      checkWin()
       if (playerSum < 21) {
         hit.addEventListener(
           'click',
@@ -124,6 +147,7 @@ const startGame = () => {
             p3Card = deck.pop()
             displayCard(p3Card, p3)
             playerSum += cardValue(p3Card)
+            checkWin()
             if (playerSum < 21) {
               hit.addEventListener(
                 'click',
@@ -131,6 +155,7 @@ const startGame = () => {
                   p4Card = deck.pop()
                   displayCard(p4Card, p4)
                   playerSum += cardValue(p4Card)
+                  checkWin()
                   if (playerSum < 21) {
                     hit.addEventListener(
                       'click',
@@ -138,6 +163,7 @@ const startGame = () => {
                         p5Card = deck.pop()
                         displayCard(p5Card, p5)
                         playerSum += cardValue(p5Card)
+                        checkWin()
                       },
                       { once: true }
                     )
@@ -153,22 +179,8 @@ const startGame = () => {
       stay.addEventListener(
         'click',
         () => {
-          displayCard(dealerHidden, d1)
-          if (dealerSum < 17) {
-            d3Card = deck.pop()
-            displayCard(d3Card, d3)
-            dealerSum += cardValue(d3Card)
-            if (dealerSum < 17) {
-              d4Card = deck.pop()
-              displayCard(d4Card, d4)
-              dealerSum += cardValue(d4Card)
-              if (dealerSum < 17) {
-                d5Card = deck.pop()
-                displayCard(d5Card, d5)
-                dealerSum += cardValue(d5Card)
-              }
-            }
-          }
+          dealerTurn()
+          stayCheckWin()
         },
         { once: true }
       )
@@ -177,7 +189,22 @@ const startGame = () => {
   )
 }
 startGame()
-// reset.addEventListener('click', () => {})
+reset.addEventListener('click', () => {
+  startGame()
+  mes.innerHTML = 'Click Start to play again'
+  d1.innerHTML = ''
+  d2.innerHTML = ''
+  d3.innerHTML = ''
+  d4.innerHTML = ''
+  d5.innerHTML = ''
+  p1.innerHTML = ''
+  p2.innerHTML = ''
+  p3.innerHTML = ''
+  p4.innerHTML = ''
+  p5.innerHTML = ''
+  dealerSum = 0
+  playerSum = 0
+})
 
 // const hitMe = (card, div) => {
 //   if (playerSum < 21) {
