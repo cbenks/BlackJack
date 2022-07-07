@@ -60,7 +60,6 @@ const cardValue = (card) => {
   }
   return parseInt(value)
 }
-const checkAce = () => {}
 
 const displayCard = (card, div) => {
   let arr = card.split('-')
@@ -77,11 +76,35 @@ const displayCard = (card, div) => {
     div.style.color = 'blue'
   }
 }
-// const displayCard = (card, div) => {
-//   let arr = card.split('-')
-//   let num = arr[0]
-//   div.innerHTML = num
+// const hitMe = (card, div) => {
+//   if (playerSum < 21) {
+//     hit.addEventListener(
+//       'click',
+//       () => {
+//         displayCard(card, div)
+//         playerSum += cardValue(card)
+//         console.log(playerSum)
+//       },
+//       { once: true }
+//     )
+//   }
 // }
+
+const checkWin = () => {
+  if (playerSum === 21) {
+    mes.innerHTML = 'BLACKJACK! You win!'
+  } else if (playerSum > 21) {
+    mes.innerHTML = 'You went over 21, you lose.'
+  }
+}
+
+const stayCheckWin = () => {
+  if (playerSum > dealerSum) {
+    mes.inn
+  }
+}
+
+const checkAce = () => {}
 
 // Conditionals
 
@@ -95,59 +118,70 @@ if (playerSum === dealerSum) {
 
 // Event Listeners
 
-start.addEventListener(
-  'click',
-  () => {
-    buildDeck()
-    shuffleDeck()
-    dealerHidden = deck.pop()
-    p1Card = deck.pop()
-    displayCard(p1Card, p1)
-    p2Card = deck.pop()
-    displayCard(p2Card, p2)
-    dealerSum += cardValue(dealerHidden)
-    playerSum += cardValue(p1Card)
-    playerSum += cardValue(p2Card)
-    if (dealerSum < 17) {
-      d2Card = deck.pop()
-      dealerSum += cardValue(d2Card)
-      displayCard(d2Card, d2)
-    }
-    if (playerSum < 21) {
-      hit.addEventListener(
-        'click',
-        () => {
-          p3Card = deck.pop()
-          displayCard(p3Card, p3)
-          playerSum += cardValue(p3Card)
-          console.log(playerSum)
-        },
-        { once: true }
-      )
-    }
+const startGame = () => {
+  start.addEventListener(
+    'click',
+    () => {
+      buildDeck()
+      shuffleDeck()
+      dealerHidden = deck.pop()
+      p1Card = deck.pop()
+      displayCard(p1Card, p1)
+      p2Card = deck.pop()
+      displayCard(p2Card, p2)
+      dealerSum += cardValue(dealerHidden)
+      playerSum += cardValue(p1Card)
+      playerSum += cardValue(p2Card)
+      if (dealerSum < 17) {
+        d2Card = deck.pop()
+        dealerSum += cardValue(d2Card)
+        displayCard(d2Card, d2)
+      }
+      if (playerSum < 21) {
+        hit.addEventListener(
+          'click',
+          () => {
+            p3Card = deck.pop()
+            displayCard(p3Card, p3)
+            playerSum += cardValue(p3Card)
+            console.log(playerSum)
+            if (playerSum < 21) {
+              hit.addEventListener(
+                'click',
+                () => {
+                  p4Card = deck.pop()
+                  displayCard(p4Card, p4)
+                  playerSum += cardValue(p4Card)
+                  console.log(playerSum)
+                  if (playerSum < 21) {
+                    hit.addEventListener(
+                      'click',
+                      () => {
+                        p5Card = deck.pop()
+                        displayCard(p5Card, p5)
+                        playerSum += cardValue(p5Card)
+                        console.log(playerSum)
+                      },
+                      { once: true }
+                    )
+                  }
+                },
+                { once: true }
+              )
+            }
+          },
+          { once: true }
+        )
+      }
+      console.log(dealerSum)
+      console.log(playerSum)
+    },
+    { once: true }
+  )
+}
 
-    console.log(dealerSum)
-    console.log(playerSum)
-  },
-  { once: true }
-)
+// stay.addEventListener('click', () => {
+//   console.log(deck.pop())
+// })
 
-stay.addEventListener('click', () => {
-  console.log(deck.pop())
-})
-
-// hit.addEventListener(
-//   'click',
-//   () => {
-//     if (playerSum <= 21) {
-//       p3Card = deck.pop()
-//       displayCard(p3Card, p3)
-//     } else {
-//       return
-//     }
-//     playerSum += cardValue(p3Card)
-//   },
-//   { once: true }
-// )
-
-reset.addEventListener('click', () => {})
+// reset.addEventListener('click', () => {})
