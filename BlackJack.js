@@ -60,6 +60,7 @@ const cardValue = (card) => {
   }
   return parseInt(value)
 }
+const checkAce = () => {}
 
 // Conditionals
 
