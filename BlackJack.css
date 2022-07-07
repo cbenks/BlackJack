@@ -45,10 +45,10 @@ input {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  height:250px;
+  height:200px;
   margin:25px;
   column-gap: 100px;
-  margin-right: 150px;
+  margin-right: 200px;
   margin-top: 5px;
 }
 
@@ -56,10 +56,10 @@ input {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  height:250px;
+  height:200px;
   margin:25px;
   column-gap: 100px;
-  margin-right: 150px;
+  margin-right: 200px;
   margin-top: 5px;
 }
 
@@ -104,9 +104,9 @@ margin-left: 15px;
 }
 
 .message {
-  color: black;
+  color: rgb(162, 21, 21);
   text-align:center;
-  font-size: 5ch;
+  font-size: 8ch;
   margin-top: 5px;
 }
 

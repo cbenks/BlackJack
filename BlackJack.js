@@ -79,6 +79,7 @@ const displayCard = (card, div) => {
 const checkWin = () => {
   if (playerSum === 21) {
     mes.innerHTML = 'BLACKJACK! You win!'
+    playerScore += 1
     stay.removeEventListener(
       'click',
       () => {
@@ -89,6 +90,7 @@ const checkWin = () => {
     )
   } else if (playerSum > 21) {
     mes.innerHTML = 'You went over 21, you lose.'
+    dealerScore += 1
     stay.removeEventListener(
       'click',
       () => {
@@ -103,15 +105,19 @@ const checkWin = () => {
 const stayCheckWin = () => {
   if (dealerSum === 21) {
     mes.innerHTML = 'Dealer hits BlackJack - You lose'
+    dealerScore += 1
   } else if (dealerSum > 21) {
     mes.innerHTML = 'Dealer busts - You win'
+    playerScore += 1
   } else {
     if (playerSum > dealerSum) {
       mes.innerHTML = 'You beat the dealer'
+      playerScore += 1
     } else if (playerSum === dealerSum) {
       mes.innerHTML = 'You are tied. It is a push'
     } else {
       mes.innerHTML = 'Dealer has higher score - You lose'
+      dealerScore += 1
     }
   }
 }
@@ -199,6 +205,9 @@ const startGame = () => {
         () => {
           dealerTurn()
           stayCheckWin()
+          dScore.innerHTML = `Dealer:${dealerScore}`
+          pScore.innerHTML = `Player:${playerScore}`
+          console.log(playerScore)
         },
         { once: true }
       )
@@ -223,9 +232,6 @@ reset.addEventListener('click', () => {
   dealerSum = 0
   playerSum = 0
 })
-
-dScore.innerHTML = `Dealer:${dealerScore}`
-pScore.innerHTML = `Player:${playerScore}`
 
 // const hitMe = (card, div) => {
 //   if (playerSum < 21) {
