@@ -50,14 +50,15 @@ const shuffleDeck = () => {
 
 const cardValue = (card) => {
   let arr = card.split('-')
-  value = arr[0]
-  if (value === NaN) {
+  let value = arr[0]
+  if (isNaN(value)) {
     if (value === 'a') {
-      value = 11
+      return 11
     } else {
-      value = 10
+      return 10
     }
   }
+  return parseInt(value)
 }
 
 // Conditionals
@@ -79,7 +80,14 @@ start.addEventListener(
     shuffleDeck()
     dealerHidden = deck.pop()
     dealerSum += cardValue(dealerHidden)
-    console.log(value)
+    if (dealerSum < 17) {
+      d2Card = deck.pop()
+      dealerSum += cardValue(d2Card)
+      d2.innerHTML = cardValue(d2Card)
+      console.log(d2Card)
+      console.log(dealerSum)
+      console.log(cardValue(dealerHidden))
+    }
   },
   { once: true }
 )
