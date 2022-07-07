@@ -43,11 +43,6 @@ const shuffleDeck = () => {
   }
 }
 
-// const randomCard = () => {
-//   x = Math.floor(Math.random() * 52)
-//   console.log(deck[x])
-// }
-
 const cardValue = (card) => {
   let arr = card.split('-')
   let value = arr[0]
@@ -76,19 +71,6 @@ const displayCard = (card, div) => {
     div.style.color = 'blue'
   }
 }
-// const hitMe = (card, div) => {
-//   if (playerSum < 21) {
-//     hit.addEventListener(
-//       'click',
-//       () => {
-//         displayCard(card, div)
-//         playerSum += cardValue(card)
-//         console.log(playerSum)
-//       },
-//       { once: true }
-//     )
-//   }
-// }
 
 const checkWin = () => {
   if (playerSum === 21) {
@@ -132,11 +114,9 @@ const startGame = () => {
       dealerSum += cardValue(dealerHidden)
       playerSum += cardValue(p1Card)
       playerSum += cardValue(p2Card)
-      if (dealerSum < 17) {
-        d2Card = deck.pop()
-        dealerSum += cardValue(d2Card)
-        displayCard(d2Card, d2)
-      }
+      d2Card = deck.pop()
+      displayCard(d2Card, d2)
+      dealerSum += cardValue(d2Card)
       if (playerSum < 21) {
         hit.addEventListener(
           'click',
@@ -144,7 +124,6 @@ const startGame = () => {
             p3Card = deck.pop()
             displayCard(p3Card, p3)
             playerSum += cardValue(p3Card)
-            console.log(playerSum)
             if (playerSum < 21) {
               hit.addEventListener(
                 'click',
@@ -152,7 +131,6 @@ const startGame = () => {
                   p4Card = deck.pop()
                   displayCard(p4Card, p4)
                   playerSum += cardValue(p4Card)
-                  console.log(playerSum)
                   if (playerSum < 21) {
                     hit.addEventListener(
                       'click',
@@ -160,7 +138,6 @@ const startGame = () => {
                         p5Card = deck.pop()
                         displayCard(p5Card, p5)
                         playerSum += cardValue(p5Card)
-                        console.log(playerSum)
                       },
                       { once: true }
                     )
@@ -173,15 +150,45 @@ const startGame = () => {
           { once: true }
         )
       }
-      console.log(dealerSum)
-      console.log(playerSum)
+      stay.addEventListener(
+        'click',
+        () => {
+          displayCard(dealerHidden, d1)
+          if (dealerSum < 17) {
+            d3Card = deck.pop()
+            displayCard(d3Card, d3)
+            dealerSum += cardValue(d3Card)
+            if (dealerSum < 17) {
+              d4Card = deck.pop()
+              displayCard(d4Card, d4)
+              dealerSum += cardValue(d4Card)
+              if (dealerSum < 17) {
+                d5Card = deck.pop()
+                displayCard(d5Card, d5)
+                dealerSum += cardValue(d5Card)
+              }
+            }
+          }
+        },
+        { once: true }
+      )
     },
     { once: true }
   )
 }
-
-// stay.addEventListener('click', () => {
-//   console.log(deck.pop())
-// })
-
+startGame()
 // reset.addEventListener('click', () => {})
+
+// const hitMe = (card, div) => {
+//   if (playerSum < 21) {
+//     hit.addEventListener(
+//       'click',
+//       () => {
+//         displayCard(card, div)
+//         playerSum += cardValue(card)
+//         console.log(playerSum)
+//       },
+//       { once: true }
+//     )
+//   }
+// }
