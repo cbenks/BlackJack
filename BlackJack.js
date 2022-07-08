@@ -77,28 +77,28 @@ const displayCard = (card, div) => {
 }
 
 const checkWin = () => {
-  if (playerSum === 21) {
-    mes.innerHTML = 'BLACKJACK! You win!'
+  if (playerSum == 21) {
     playerScore += 1
-    // stay.removeEventListener(
-    //   'click',
-    //   () => {
-    //     dealerTurn()
-    //     stayCheckWin()
-    //   },
-    //   { once: true }
-    // )
+    stay.removeEventListener(
+      'click',
+      () => {
+        dealerTurn()
+        stayCheckWin()
+      },
+      { once: true }
+    )
+    mes.innerHTML = 'BLACKJACK! You win!'
   } else if (playerSum > 21) {
-    mes.innerHTML = 'You went over 21, you lose.'
     dealerScore += 1
-    // stay.removeEventListener(
-    //   'click',
-    //   () => {
-    //     dealerTurn()
-    //     stayCheckWin()
-    //   },
-    //   { once: true }
-    // )
+    stay.removeEventListener(
+      'click',
+      () => {
+        dealerTurn()
+        stayCheckWin()
+      },
+      { once: true }
+    )
+    mes.innerHTML = 'You went over 21, you lose.'
   }
 }
 
