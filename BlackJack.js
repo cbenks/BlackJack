@@ -163,7 +163,6 @@ const startGame = () => {
       d2Card = deck.pop()
       displayCard(d2Card, d2)
       dealerSum += cardValue(d2Card)
-      checkWin()
       if (playerSum < 21) {
         hit.addEventListener(
           'click',
@@ -171,7 +170,6 @@ const startGame = () => {
             p3Card = deck.pop()
             displayCard(p3Card, p3)
             playerSum += cardValue(p3Card)
-            checkWin()
             if (playerSum < 21) {
               hit.addEventListener(
                 'click',
@@ -179,7 +177,6 @@ const startGame = () => {
                   p4Card = deck.pop()
                   displayCard(p4Card, p4)
                   playerSum += cardValue(p4Card)
-                  checkWin()
                   if (playerSum < 21) {
                     hit.addEventListener(
                       'click',
@@ -187,7 +184,6 @@ const startGame = () => {
                         p5Card = deck.pop()
                         displayCard(p5Card, p5)
                         playerSum += cardValue(p5Card)
-                        checkWin()
                       },
                       { once: true }
                     )
@@ -200,19 +196,18 @@ const startGame = () => {
           { once: true }
         )
       }
-      if (playerSum < 21) {
-        stay.addEventListener(
-          'click',
-          () => {
-            dealerTurn()
-            stayCheckWin()
-            dScore.innerHTML = `Dealer:${dealerScore}`
-            pScore.innerHTML = `Player:${playerScore}`
-            console.log(playerScore)
-          },
-          { once: true }
-        )
-      }
+      stay.addEventListener(
+        'click',
+        () => {
+          dealerTurn()
+          stayCheckWin()
+          dScore.innerHTML = `Dealer:${dealerScore}`
+          pScore.innerHTML = `Player:${playerScore}`
+          console.log(playerScore)
+        },
+        { once: true }
+      )
+      checkWin()
     },
     { once: true }
   )
