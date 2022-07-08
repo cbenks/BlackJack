@@ -27,9 +27,6 @@ let dealerHidden = []
 let playerScore = 0
 let dealerScore = 0
 
-//FUNCTIONS
-// resource: https://www.youtube.com/watch?v=bMYCWccL-3U
-
 const buildDeck = () => {
   for (i = 0; i < values.length; i++) {
     for (x = 0; x < suits.length; x++) {
@@ -149,9 +146,13 @@ const keepScore = () => {
   }
 }
 
-const checkAce = () => {}
-
-// Event Listeners
+const checkAce = () => {
+  let arr = card.split('-')
+  let value = arr[0]
+  if (value === 'A' && playerSum < 21) {
+    return 1
+  }
+}
 
 const startGame = () => {
   start.addEventListener(
@@ -244,17 +245,3 @@ reset.addEventListener('click', () => {
   stay.style.opacity = '100%'
   startGame()
 })
-
-// const hitMe = (card, div) => {
-//   if (playerSum < 21) {
-//     hit.addEventListener(
-//       'click',
-//       () => {
-//         displayCard(card, div)
-//         playerSum += cardValue(card)
-//         console.log(playerSum)
-//       },
-//       { once: true }
-//     )
-//   }
-// }
