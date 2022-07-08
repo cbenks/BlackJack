@@ -146,13 +146,13 @@ const keepScore = () => {
   }
 }
 
-const checkAce = () => {
-  let arr = card.split('-')
-  let value = arr[0]
-  if (value === 'A' && playerSum < 21) {
-    return 1
-  }
-}
+// const checkAce = () => {
+//   let arr = card.split('-')
+//   let value = arr[0]
+//   if (value === 'A' && playerSum < 21) {
+//     return 1
+//   }
+// }
 
 const startGame = () => {
   start.addEventListener(
