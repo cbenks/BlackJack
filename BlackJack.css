@@ -67,7 +67,7 @@ input {
   background-color: white;
   border: 5px solid black;
   border-radius: 12.5px;
-  font-size: 15ch;
+  font-size: 12ch;
   text-align: center;
   color: red;
   padding: 40px 20px 40px 20px;
@@ -104,7 +104,7 @@ margin-left: 15px;
 }
 
 .message {
-  color: rgb(162, 21, 21);
+  color: red;
   text-align:center;
   font-size: 8ch;
   margin-top: 5px;

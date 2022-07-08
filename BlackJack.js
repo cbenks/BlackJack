@@ -80,25 +80,25 @@ const checkWin = () => {
   if (playerSum === 21) {
     mes.innerHTML = 'BLACKJACK! You win!'
     playerScore += 1
-    stay.removeEventListener(
-      'click',
-      () => {
-        dealerTurn()
-        stayCheckWin()
-      },
-      { once: true }
-    )
+    // stay.removeEventListener(
+    //   'click',
+    //   () => {
+    //     dealerTurn()
+    //     stayCheckWin()
+    //   },
+    //   { once: true }
+    // )
   } else if (playerSum > 21) {
     mes.innerHTML = 'You went over 21, you lose.'
     dealerScore += 1
-    stay.removeEventListener(
-      'click',
-      () => {
-        dealerTurn()
-        stayCheckWin()
-      },
-      { once: true }
-    )
+    // stay.removeEventListener(
+    //   'click',
+    //   () => {
+    //     dealerTurn()
+    //     stayCheckWin()
+    //   },
+    //   { once: true }
+    // )
   }
 }
 
@@ -154,8 +154,8 @@ const startGame = () => {
       shuffleDeck()
       dealerHidden = deck.pop()
       p1Card = deck.pop()
-      displayCard(p1Card, p1)
       p2Card = deck.pop()
+      displayCard(p1Card, p1)
       displayCard(p2Card, p2)
       dealerSum += cardValue(dealerHidden)
       playerSum += cardValue(p1Card)
