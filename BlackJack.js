@@ -65,6 +65,7 @@ const displayCard = (card, div) => {
   let suit = arr[1]
   let num = arr[0]
   div.innerHTML = num
+  div.style.backgroundColor = 'white'
   if (suit === 's') {
     div.style.color = 'black'
   } else if (suit === 'h') {
@@ -78,12 +79,10 @@ const displayCard = (card, div) => {
 
 const checkWin = () => {
   if (playerSum == 21) {
-    playerScore += 1
     stay.style.opacity = '50%'
     stay.removeEventListener('click', stayFunction)
     mes.innerHTML = 'BLACKJACK! You win!'
   } else if (playerSum > 21) {
-    dealerScore += 1
     stay.style.opacity = '50%'
     stay.removeEventListener('click', stayFunction)
     mes.innerHTML = 'You went over 21, you lose.'
@@ -95,17 +94,13 @@ const stayCheckWin = () => {
     mes.innerHTML = 'You are tied. It is a push'
   } else if (dealerSum > 21) {
     mes.innerHTML = 'Dealer busts - You win'
-    playerScore += 1
   } else {
     if (playerSum < 22 && playerSum > dealerSum) {
       mes.innerHTML = 'You beat the dealer'
-      playerScore += 1
     } else if (dealerSum === 21) {
       mes.innerHTML = 'Dealer makes 21 - you lose'
-      dealerScore += 1
     } else if (dealerSum > playerSum) {
       mes.innerHTML = 'Dealer has higher score - You lose'
-      dealerScore += 1
     }
   }
 }
@@ -114,15 +109,15 @@ const dealerTurn = () => {
   displayCard(dealerHidden, d1)
   if (dealerSum < 17) {
     d3Card = deck.pop()
-    displayCard(d3Card, d3)
+    setTimeout(displayCard, 500, d3Card, d3)
     dealerSum += cardValue(d3Card)
     if (dealerSum < 17) {
       d4Card = deck.pop()
-      displayCard(d4Card, d4)
+      setTimeout(displayCard, 1000, d4Card, d4)
       dealerSum += cardValue(d4Card)
       if (dealerSum < 17) {
         d5Card = deck.pop()
-        displayCard(d5Card, d5)
+        setTimeout(displayCard, 1500, d5Card, d5)
         dealerSum += cardValue(d5Card)
       }
     }
@@ -132,6 +127,26 @@ const dealerTurn = () => {
 const stayFunction = () => {
   dealerTurn()
   stayCheckWin()
+}
+
+const keepScore = () => {
+  if (playerSum > 21) {
+    dealerScore += 1
+  } else if (playerSum === 21) {
+    playerScore += 1
+  } else if (dealerSum > 21) {
+    playerScore = +1
+  } else if (dealerSum === 21) {
+    dealerScore += 1
+  } else if (playerSum < 21) {
+    if (playerSum === dealerSum) {
+      return
+    } else if (playerSum > dealerSum) {
+      playerScore += 1
+    } else if (playerSum < dealerSum) {
+      dealerScore += 1
+    }
+  }
 }
 
 const checkAce = () => {}
@@ -150,9 +165,9 @@ const startGame = () => {
       d2Card = deck.pop()
       p1Card = deck.pop()
       p2Card = deck.pop()
-      displayCard(d2Card, d2)
-      displayCard(p1Card, p1)
-      displayCard(p2Card, p2)
+      setTimeout(displayCard, 500, d2Card, d2)
+      setTimeout(displayCard, 1000, p1Card, p1)
+      setTimeout(displayCard, 1500, p2Card, p2)
       dealerSum += cardValue(dealerHidden)
       playerSum += cardValue(p1Card)
       playerSum += cardValue(p2Card)
@@ -163,7 +178,7 @@ const startGame = () => {
           'click',
           () => {
             p3Card = deck.pop()
-            displayCard(p3Card, p3)
+            setTimeout(displayCard, 500, p3Card, p3)
             playerSum += cardValue(p3Card)
             checkWin()
             if (playerSum < 21) {
@@ -171,7 +186,7 @@ const startGame = () => {
                 'click',
                 () => {
                   p4Card = deck.pop()
-                  displayCard(p4Card, p4)
+                  setTimeout(displayCard, 500, p4Card, p4)
                   playerSum += cardValue(p4Card)
                   checkWin()
                   if (playerSum < 21) {
@@ -179,7 +194,7 @@ const startGame = () => {
                       'click',
                       () => {
                         p5Card = deck.pop()
-                        displayCard(p5Card, p5)
+                        setTimeout(displayCard, 500, p5Card, p5)
                         playerSum += cardValue(p5Card)
                         checkWin()
                       },
@@ -194,17 +209,17 @@ const startGame = () => {
           { once: true }
         )
       }
-      dScore.innerHTML = `Dealer:${dealerScore}`
-      pScore.innerHTML = `Player:${playerScore}`
-      console.log(playerScore)
-      console.log(dealerScore)
     },
     { once: true }
   )
 }
 startGame()
 reset.addEventListener('click', () => {
-  startGame()
+  keepScore()
+  dScore.innerHTML = `Dealer:${dealerScore}`
+  pScore.innerHTML = `Player:${playerScore}`
+  dealerSum = 0
+  playerSum = 0
   mes.innerHTML = 'Click Start to play again'
   d1.innerHTML = ''
   d2.innerHTML = ''
@@ -216,9 +231,18 @@ reset.addEventListener('click', () => {
   p3.innerHTML = ''
   p4.innerHTML = ''
   p5.innerHTML = ''
-  dealerSum = 0
-  playerSum = 0
+  d1.style.backgroundColor = 'black'
+  d2.style.backgroundColor = 'black'
+  d3.style.backgroundColor = 'black'
+  d4.style.backgroundColor = 'black'
+  d5.style.backgroundColor = 'black'
+  p1.style.backgroundColor = 'black'
+  p2.style.backgroundColor = 'black'
+  p3.style.backgroundColor = 'black'
+  p4.style.backgroundColor = 'black'
+  p5.style.backgroundColor = 'black'
   stay.style.opacity = '100%'
+  startGame()
 })
 
 // const hitMe = (card, div) => {

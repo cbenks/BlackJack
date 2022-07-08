@@ -64,7 +64,7 @@ input {
 }
 
 .card{
-  background-color: white;
+  background-color: black;
   border: 5px solid black;
   border-radius: 12.5px;
   font-size: 12ch;

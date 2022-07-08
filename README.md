@@ -19,6 +19,14 @@ Welcome to my first project - the classic game of BlackJack. This will be built 
 
 ---
 
+## _Credits_
+
+---
+
+resource for inspiration on the buildDeck and shuffleDeck functions: https://www.youtube.com/watch?v=bMYCWccL-3U
+
+---
+
 My [Trello board](https://trello.com/invite/b/isNuAlxx/8841a63215f1a6c26d5057d2121cafb6/blackjack).
 
 #### **_07/04/2022_**
