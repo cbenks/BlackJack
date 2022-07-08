@@ -200,17 +200,19 @@ const startGame = () => {
           { once: true }
         )
       }
-      stay.addEventListener(
-        'click',
-        () => {
-          dealerTurn()
-          stayCheckWin()
-          dScore.innerHTML = `Dealer:${dealerScore}`
-          pScore.innerHTML = `Player:${playerScore}`
-          console.log(playerScore)
-        },
-        { once: true }
-      )
+      if (playerSum < 21) {
+        stay.addEventListener(
+          'click',
+          () => {
+            dealerTurn()
+            stayCheckWin()
+            dScore.innerHTML = `Dealer:${dealerScore}`
+            pScore.innerHTML = `Player:${playerScore}`
+            console.log(playerScore)
+          },
+          { once: true }
+        )
+      }
     },
     { once: true }
   )
