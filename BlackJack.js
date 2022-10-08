@@ -49,7 +49,11 @@ const cardValue = (card) => {
   let value = arr[0]
   if (isNaN(value)) {
     if (value === 'A') {
-      return 11
+      if (playerSum + 11 > 21) {
+        return 1
+      } else {
+        return 11
+      }
     } else {
       return 10
     }
